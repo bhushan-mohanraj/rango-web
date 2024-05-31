@@ -2,11 +2,15 @@
     <head>
         <title>Rango</title>
         <style>
+            :root {
+                --color: rgb(50, 180, 80);
+            }
+
             body {
                 max-width: 48rem;
                 margin: auto;
                 padding: 0 1rem;
-                font-family: sans-serif;
+                font-family: "Rubik", sans-serif;
             }
 
             h1 {
@@ -14,11 +18,27 @@
                 margin-bottom: 0.5rem;
             }
 
+            #title {
+                margin-top: 4rem;
+                margin-bottom: 0.25rem;
+                font-size: 4rem;
+                color: var(--color);
+            }
+
+            #subtitle {
+                margin-top: 0.25rem;
+                margin-bottom: 0.5rem;
+                font-size: 2rem;
+                font-weight: normal;
+            }
+
             p {
                 margin-top: 0;
                 margin-bottom: 1rem;
             }
         </style>
+
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     </head>
     <body>
         <h1 id="title">Rango</h1>
