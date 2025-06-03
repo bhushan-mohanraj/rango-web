@@ -43,17 +43,26 @@
         <div id="right"></div>
 
         <script type="module">
-            import init, { compile_string } from "./pkg/rango_compiler.js";
+            import init, {
+                compile_string
+            } from "./pkg/rango_compiler.js";
 
             const editor = document.getElementById("editor");
             const output = document.getElementById("right");
 
-            init().then(() => {
+            function compile() {
                 output.innerHTML = compile_string(editor.value);
-                editor.addEventListener("input", function (event) {
-                    output.innerHTML = compile_string(editor.value);
-                });
-            });
+            }
+
+            fetch("./example.rg")
+                .then(response => response.text())
+                .then(text => editor.value = text)
+                .then(() => init().then(() => {
+                    compile();
+                    editor.addEventListener("input", function(event) {
+                        compile()
+                    });
+                }));
         </script>
     </body>
 </html>
