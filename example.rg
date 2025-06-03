@@ -27,7 +27,8 @@
 
 ##(header: **[Future] Work):
     @list:
+        --: Better compiler logic and semantics
+        --: Improved error messages
         --: Math syntax
-        --: Improve error messages
-        --: **[Evaluators] (for example, for a table of contents)
         --: Performance improvements
+        --: **[Evaluators] (for example, for a table of contents)
