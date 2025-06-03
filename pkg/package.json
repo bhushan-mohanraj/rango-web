@@ -1,0 +1,15 @@
+{
+  "name": "rango-compiler",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "rango_compiler_bg.wasm",
+    "rango_compiler.js",
+    "rango_compiler.d.ts"
+  ],
+  "main": "rango_compiler.js",
+  "types": "rango_compiler.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
