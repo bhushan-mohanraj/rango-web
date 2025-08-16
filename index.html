@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
         <title>Rango</title>
 
         <style>
@@ -12,58 +16,54 @@
             }
 
             body {
-                margin: 0;
-                font-family: sans-serif;
-            }
-
-            #left, #right {
-                position: fixed;
-                height: 100%;
-                width: 50%;
+                margin: auto;
                 padding: 1rem;
+                max-width: 40rem;
+                font-family: "Public Sans", sans-serif;
             }
 
-            #right {
-                right: 0;
-                overflow-y: auto;
-            }
-
-            .right > div {
-                margin-bottom: 0.5rem;
-            }
-
-            #editor {
-                height: 100%;
-                width: 100%;
+            p {
+                line-height: 1.5;
             }
         </style>
     </head>
 
     <body>
-        <div id="left"><textarea id="editor"></textarea></div>
-        <div id="right"></div>
+        <h1>Rango</h1>
 
-        <script type="module">
-            import init, {
-                compile_string
-            } from "./pkg/rango_compiler.js";
+        <p>
+            Rango
+            is a <em>simple and productive</em> document language,
+            inspired by Markdown and LaTeX.
+            Rango is easy-to-learn
+            but still packs all the features expected for complex writing.
+            The compiler, written in Rust,
+            outputs HTML and LaTeX.
+            <a href="./playground.html">Try Rango</a> at the playground.
+        </p>
 
-            const editor = document.getElementById("editor");
-            const output = document.getElementById("right");
+        <h2>Why?</h2>
 
-            function compile() {
-                output.innerHTML = compile_string(editor.value);
-            }
+        <p>
+            While LaTeX is ubiquitous,
+            its syntax and programming model are antiquated,
+            and its compiler is slow and produces confusing error messages.
+        </p>
 
-            fetch("./example.rg")
-                .then(response => response.text())
-                .then(text => editor.value = text)
-                .then(() => init().then(() => {
-                    compile();
-                    editor.addEventListener("input", function(event) {
-                        compile()
-                    });
-                }));
-        </script>
+        <p>
+            Typst solves many of LaTeX's problems well.
+            Still,
+            it sticks to LaTeX's philosophy
+            of integrating styling and content in one language,
+            intead of separating the two "purely."
+        </p>
+
+        <p>
+            Rango offers an alternative
+            where the primary language focuses purely on semantic markup,
+            clearly dividing styling and scripting from content.
+            A more restrictive but more generic language
+            enables many output formats: HTML, LaTeX, Word documents, and more.
+        </p>
     </body>
 </html>

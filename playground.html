@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Rango</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: sans-serif;
+            }
+
+            #left, #right {
+                position: fixed;
+                height: 100%;
+                width: 50%;
+                padding: 1rem;
+            }
+
+            #right {
+                right: 0;
+                overflow-y: auto;
+            }
+
+            .right > div {
+                margin-bottom: 0.5rem;
+            }
+
+            #editor {
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="left"><textarea id="editor"></textarea></div>
+        <div id="right"></div>
+
+        <script type="module">
+            import init, {
+                compile_string
+            } from "./pkg/rango_compiler.js";
+
+            const editor = document.getElementById("editor");
+            const output = document.getElementById("right");
+
+            function compile() {
+                output.innerHTML = compile_string(editor.value);
+            }
+
+            fetch("./example.rg")
+                .then(response => response.text())
+                .then(text => editor.value = text)
+                .then(() => init().then(() => {
+                    compile();
+                    editor.addEventListener("input", function(event) {
+                        compile()
+                    });
+                }));
+        </script>
+    </body>
+</html>
